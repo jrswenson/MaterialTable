@@ -12,7 +12,9 @@ import {
   MatInputModule,
   MatCheckboxModule,
   MatDatepickerModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatPaginatorModule,
+  MatSortModule
 } from '@angular/material';
 
 import { FormTableComponent } from './form-table/form-table.component';
@@ -42,7 +44,9 @@ import { UserListComponent } from './user-list/user-list.component';
     MatFormFieldModule,
     MatInputModule,
     MatNativeDateModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]

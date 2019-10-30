@@ -12,7 +12,7 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
-  dataSource: BehaviorSubject<MatTableDataSource<User>> = new BehaviorSubject(null);
+  dataSource: BehaviorSubject<Array<User>> = new BehaviorSubject(null);
   columns: Array<ColumnDefinition> = [
     {
       identifier: 'id',
@@ -58,7 +58,7 @@ export class UserListComponent implements OnInit {
   ngOnInit() {
     this.userService.getAll().subscribe(rows => {
       rows = rows.map(row => new User(row));
-      this.dataSource.next(new MatTableDataSource(rows));
+      this.dataSource.next(rows);
     });
   }
 
