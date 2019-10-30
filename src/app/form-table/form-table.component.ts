@@ -1,10 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { UserService } from '../services/user.service';
-import { User } from '../models/user';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material';
-import { ColumnDefinition, CellType } from './column-definition';
+import { ColumnDefinition } from './column-definition';
 import { BehaviorSubject } from 'rxjs';
+import { FormTableRow } from './form-table-row';
 
 @Component({
   selector: 'app-form-table',
@@ -12,9 +11,10 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: []
 })
 export class FormTableComponent implements OnInit {
-  @Input() dataInput: BehaviorSubject<MatTableDataSource<any>>;
+  @Input() dataInput: BehaviorSubject<MatTableDataSource<FormTableRow>>;
   @Input() columns: Array<ColumnDefinition>;
-  dataSource: MatTableDataSource<any>;
+
+  dataSource: MatTableDataSource<FormTableRow>;
   form: FormGroup;
 
   displayedColumns: Array<string>;
@@ -22,9 +22,9 @@ export class FormTableComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.dataInput.subscribe((d) => {
-      if (d) {
-        this.dataSource = d;
+    this.dataInput.subscribe((data) => {
+      if (data) {
+        this.dataSource = data;
         const formGroups = this.dataSource.data.map(d => d.formGroup);
         this.form = this.formBuilder.group({
           rows: this.formBuilder.array(formGroups)
