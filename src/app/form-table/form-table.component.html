@@ -1,35 +1,33 @@
-<form [formGroup]="form" autocomplete="off">
-    <mat-table [dataSource]="dataSource">
-        <ng-container *ngFor="let column of columns" [matColumnDef]="column.identifier">
-            <mat-header-cell *matHeaderCellDef>{{ column.header }}</mat-header-cell>
-            <mat-cell *matCellDef="let row">
-                <div [ngSwitch]="column.cellType">
-                    <mat-form-field *ngSwitchCase="'INPUT'" floatLabel='never'>
-                        <input matInput [placeholder]="column.cellPlaceHolder" [formControl]="column.cellControl(row)">
-                    </mat-form-field>
+<mat-table [dataSource]="dataSource">
+    <ng-container *ngFor="let column of columns" [matColumnDef]="column.identifier">
+        <mat-header-cell *matHeaderCellDef>{{ column.header }}</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+            <div [ngSwitch]="column.cellType">
+                <mat-form-field *ngSwitchCase="'INPUT'" floatLabel='never'>
+                    <input matInput [placeholder]="column.cellPlaceHolder" [formControl]="column.cellControl(row)">
+                </mat-form-field>
 
-                    <mat-form-field *ngSwitchCase="'TEXTAREA'" floatLabel='never'>
-                        <textarea matInput [placeholder]="column.cellPlaceHolder"
-                            [formControl]="column.cellControl(row)"></textarea>
-                    </mat-form-field>
+                <mat-form-field *ngSwitchCase="'TEXTAREA'" floatLabel='never'>
+                    <textarea matInput [placeholder]="column.cellPlaceHolder"
+                        [formControl]="column.cellControl(row)"></textarea>
+                </mat-form-field>
 
-                    <mat-checkbox *ngSwitchCase="'CHECKBOX'" [formControl]="column.cellControl(row)"></mat-checkbox>
+                <mat-checkbox *ngSwitchCase="'CHECKBOX'" [formControl]="column.cellControl(row)"></mat-checkbox>
 
-                    <mat-form-field *ngSwitchCase="'DATE'" floatLabel='never'>
-                        <input matInput [matDatepicker]="picker" placeholder="Choose a date"
-                            [formControl]="column.cellControl(row)">
-                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
-                    </mat-form-field>
+                <mat-form-field *ngSwitchCase="'DATE'" floatLabel='never'>
+                    <input matInput [matDatepicker]="picker" placeholder="Choose a date"
+                        [formControl]="column.cellControl(row)">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
 
-                    <div *ngSwitchDefault>
-                        {{column.cellControl(row).value}}
-                    </div>
+                <div *ngSwitchDefault>
+                    {{column.cellControl(row).value}}
                 </div>
-            </mat-cell>
-        </ng-container>
+            </div>
+        </mat-cell>
+    </ng-container>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
-</form>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
