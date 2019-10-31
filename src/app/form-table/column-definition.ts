@@ -7,6 +7,7 @@ export class ColumnDefinition {
     cellType: CellType;
     cellControl: (element: any) => AbstractControl;
     cellPlaceHolder?: string;
+    sortable: boolean;
 }
 
 export enum CellType {

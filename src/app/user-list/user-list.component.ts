@@ -19,37 +19,43 @@ export class UserListComponent implements OnInit {
       header: 'ID',
       cellType: CellType.INPUT,
       cellControl: (element: User) => element.idCtrl,
-      cellPlaceHolder: 'Enter User Id'
+      cellPlaceHolder: 'Enter User Id',
+      sortable: true
     },
     {
       identifier: 'name',
       header: 'Name',
       cellType: CellType.PLAIN,
-      cellControl: (element: User) => element.nameCtrl
+      cellControl: (element: User) => element.nameCtrl,
+      sortable: true
     },
     {
       identifier: 'username',
       header: 'User Name',
       cellType: CellType.PLAIN,
-      cellControl: (element: User) => element.userNameCtrl
+      cellControl: (element: User) => element.userNameCtrl,
+      sortable: true
     },
     {
       identifier: 'createDate',
       header: 'Created On',
       cellType: CellType.DATE,
-      cellControl: (element: User) => element.createDateCtrl
+      cellControl: (element: User) => element.createDateCtrl,
+      sortable: true
     },
     {
       identifier: 'active',
       header: 'User Active',
       cellType: CellType.CHECKBOX,
-      cellControl: (element: User) => element.activeCtrl
+      cellControl: (element: User) => element.activeCtrl,
+      sortable: true
     },
     {
       identifier: 'description',
       header: 'Description',
       cellType: CellType.TEXTAREA,
-      cellControl: (element: User) => element.userNameCtrl
+      cellControl: (element: User) => element.userNameCtrl,
+      sortable: true
     }
   ];
 

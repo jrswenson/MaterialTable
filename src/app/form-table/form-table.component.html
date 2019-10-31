@@ -4,7 +4,14 @@
     </mat-form-field>
     <table mat-table [dataSource]="dataSource" matSort>
         <ng-container *ngFor="let column of columns" [matColumnDef]="column.identifier">
-            <mat-header-cell mat-sort-header *matHeaderCellDef>{{ column.header }}</mat-header-cell>
+            <div *ngIf="column.sortable; then thenBlock else elseBlock"></div>
+            <ng-template #thenBlock>
+                <mat-header-cell mat-sort-header *matHeaderCellDef>{{ column.header }}</mat-header-cell>
+            </ng-template>
+            <ng-template #elseBlock>
+                <mat-header-cell *matHeaderCellDef>{{ column.header }}</mat-header-cell>
+            </ng-template>
+
             <mat-cell *matCellDef="let row">
                 <div [ngSwitch]="column.cellType">
                     <mat-form-field *ngSwitchCase="'INPUT'" floatLabel='never'>

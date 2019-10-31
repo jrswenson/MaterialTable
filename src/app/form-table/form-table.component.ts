@@ -40,6 +40,24 @@ export class FormTableComponent implements OnInit {
     });
 
     this.displayedColumns = this.columns.map(m => m.identifier);
+
+    // this.dataSource.sortingDataAccessor = (object, columnDef) => {
+    //   const tempVal = object[columnDef];
+    //   console.log('this.dataSource.sortingDataAccessor');
+    //   console.log(tempVal);
+
+    //   if (tempVal) {
+    //     if (typeof tempVal === 'boolean') {
+    //       return tempVal ? 1 : 0;
+    //     }
+
+    //     if (Object.prototype.toString.call(tempVal) === '[object Date]') {
+    //       return new Date(tempVal);
+    //     }
+    //   }
+
+    //   return tempVal;
+    // };
   }
 
   applyFilter(filterValue: string) {

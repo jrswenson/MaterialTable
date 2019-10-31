@@ -18,7 +18,7 @@ export class User {
     constructor(private ctorUser: User) {
         if (ctorUser) {
             this.origCreateDate = ctorUser.createDate;
-            this.origActive = ctorUser.active;
+            this.origActive = ctorUser.active ? ctorUser.active === true ? true : false : false;
             this.origId = ctorUser.id;
             this.origName = ctorUser.name;
             this.origUsername = ctorUser.username;
@@ -57,7 +57,7 @@ export class User {
     }
 
     get createDate(): Date {
-        return this.idCtrl.value;
+        return this.createDateCtrl.value;
     }
     set createDate(value: Date) {
         // tslint:disable-next-line: curly
@@ -68,7 +68,7 @@ export class User {
     }
 
     get active(): boolean {
-        return this.idCtrl.value;
+        return this.activeCtrl.value;
     }
     set active(value: boolean) {
         // tslint:disable-next-line: curly
